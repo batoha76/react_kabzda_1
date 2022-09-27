@@ -1,0 +1,12 @@
+.MyPosts {
+    margin: 3vw 0vw 0vw 2vw;
+}
+    .item {
+        color: red;
+    }
+    .item2 {
+        color: white;
+    }
+    .item3 {
+        color: rgb(3, 236, 186);
+    }

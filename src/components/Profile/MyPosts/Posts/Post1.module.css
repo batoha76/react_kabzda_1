@@ -1,0 +1,9 @@
+.item {
+    color: red;
+}
+.img {
+    width: 2vw;
+    height: 2vw;
+    /* margin-left: .5vw; */
+    border-radius: 20px;
+}

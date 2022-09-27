@@ -1,0 +1,16 @@
+/* .content { 
+    grid-area: c;
+    background-color: chartreuse;
+    height: 70vh;
+} ВЫНЕСЛИ ЭТО В 'App.css' В '.app_wrapper_content' */
+
+
+/* ВЫНЕС ЭТО В 'ProfileInfo/ProfileInfo.module.css
+.img {
+        height: 20vh;
+        width: 80vw;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+ */

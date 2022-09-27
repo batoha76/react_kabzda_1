@@ -1,0 +1,16 @@
+.nav {  /* обрати внимание: это ТЕГ !!! */
+    grid-area: n;
+    background-color: burlywood;
+    height: 70vh;
+    padding: 2vw;
+
+
+}
+    a {
+        color: rgb(90, 139, 0);
+        text-decoration: none;
+    }
+
+    a[class="active"] {
+        color: rgb(225, 0, 255) /* !important */; /* В ОРИГИНАЛЕ БЫЛО ДАБАВЛЕНО: !important */
+      }
