@@ -14,7 +14,8 @@ import { BrowserRouter, Route, Routes, } from 'react-router-dom';
  
 
 
-const App = () => {
+const App = (props) => {
+
   return (
     /* в дивах JSX-разметка */
     <BrowserRouter>
@@ -23,9 +24,14 @@ const App = () => {
         <Navbar/>
         <div className='app_wrapper_content'>
             <Routes>
-              <Route /* exact - это для точного пути, у меня
-               работало и без него */ path="/dialogs" element={<Dialogs />} />
-              <Route path="/profile" element={<Profile />} />
+              <Route /* exact - это для точного пути, у меня работало и без него */ 
+                path="/dialogs" element={<Dialogs 
+                herdialogsData={props.appState.dialogsPage.dialogsData} 
+                fromApp_Messages/* ПРИСТАВКАfrom_App ДОБАВЛЕН ЧТОБЫ Я ЛУЧШЕ ПОНЯЛ PROPS */={props.appState.dialogsPage.messages} />} />
+              <Route path="/profile" element={<Profile posts={props.appState.profilePage.posts} />} />
+{/*               ЕЩЁ ОДИН ВАРИАНТ Route :
+              <Route path="/dialogs" render={ () => <Dialogs />} />
+              <Route path="/profile" render={ () => <Profile />} /> */}
             </Routes>
         </div>
       </div>

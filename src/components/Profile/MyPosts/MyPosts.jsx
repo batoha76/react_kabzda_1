@@ -4,16 +4,16 @@ import Post1 from "./Posts/Post1";
 
 
 
-const MyPosts = () => {
+const MyPosts = (props) => {
 
-    let posts = [ /* ЭТО ВРЕМЕННОЕ РЕШЕНИЕ */
+/*     let posts = [ 
         { id: 1, message: 'Hi, how are you?', likesCount: 0 },
         { id: 2, message: 'It`s my first post', likesCount: 23 },
         { id: 3, message: 'bla bla bla', likesCount: 2 },
         { id: 4, message: 'oh, es!!!!', likesCount: 230 },
-    ];
+    ]; */
 
-    let postsElements = posts.map (p => <Post1 message={p.message} LikesCount={p.likesCount} />)
+    let postsElements = props.posts.map (p => <Post1 message={p.message} LikesCount={p.likesCount} />)
 
     return (
         <div className={s.MyPosts}>
