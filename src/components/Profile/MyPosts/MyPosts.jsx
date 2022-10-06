@@ -13,15 +13,23 @@ const MyPosts = (props) => {
         { id: 4, message: 'oh, es!!!!', likesCount: 230 },
     ]; */
 
-    let postsElements = props.posts.map (p => <Post1 message={p.message} LikesCount={p.likesCount} />)
+    let postsElements = props.posts.map (p => <Post1 message={p.message} LikesCount={p.likesCount} />);
+
+    let newPostElement = React.createRef();
+    
+    let addPost = () => {
+        let text = newPostElement.current.value;
+        props.addPost (text);
+        newPostElement.current.value=''; //ЗАЧЕМ ДОБАВЛЕНО - НЕПОНЯТНО
+    };
 
     return (
         <div className={s.MyPosts}>
             <div>
-                <textarea></textarea>
+                <textarea ref={newPostElement}></textarea>
             </div>
             <div>
-                <button>Add post</button>
+                <button onClick={ addPost } >Add post</button>
             </div>
             <h3 className={`${s.item3} ${s.item}`}>My posts</h3>
               {postsElements}

@@ -18,7 +18,7 @@ const App = (props) => {
 
   return (
     /* в дивах JSX-разметка */
-    <BrowserRouter>
+    /* <BrowserRouter> ПЕРЕНЕС В index.js */
       <div className='app_wrapper'>
         <Header/>
         <Navbar/>
@@ -26,17 +26,16 @@ const App = (props) => {
             <Routes>
               <Route /* exact - это для точного пути, у меня работало и без него */ 
                 path="/dialogs" element={<Dialogs 
-                herdialogsData={props.appState.dialogsPage.dialogsData} 
-                fromApp_Messages/* ПРИСТАВКАfrom_App ДОБАВЛЕН ЧТОБЫ Я ЛУЧШЕ ПОНЯЛ PROPS */={props.appState.dialogsPage.messages} />} />
-              <Route path="/profile" element={<Profile posts={props.appState.profilePage.posts} />} />
+                state={props.appState.dialogsPage}/>} />
+              <Route path="/profile" element={<Profile state={props.appState.profilePage} 
+              addPost={props.addPost}/>} />
 {/*               ЕЩЁ ОДИН ВАРИАНТ Route :
               <Route path="/dialogs" render={ () => <Dialogs />} />
               <Route path="/profile" render={ () => <Profile />} /> */}
             </Routes>
         </div>
       </div>
-    </BrowserRouter>
-
+    /* </BrowserRouter> */
   );
 }
 
