@@ -27,8 +27,9 @@ const App = (props) => {
               <Route /* exact - это для точного пути, у меня работало и без него */ 
                 path="/dialogs" element={<Dialogs 
                 state={props.appState.dialogsPage}/>} />
-              <Route path="/profile" element={<Profile state={props.appState.profilePage} 
-              addPost={props.addPost}/>} />
+              <Route path="/profile" element={<Profile profilePage={props.appState.profilePage} 
+                                                       addPost={props.addPost}
+                                                       updateNewPostText={props.updateNewPostText}/>} />
 {/*               ЕЩЁ ОДИН ВАРИАНТ Route :
               <Route path="/dialogs" render={ () => <Dialogs />} />
               <Route path="/profile" render={ () => <Profile />} /> */}
