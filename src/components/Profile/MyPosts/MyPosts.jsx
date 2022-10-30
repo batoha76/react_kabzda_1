@@ -21,6 +21,11 @@ const MyPosts = (props) => {
         props.addPost ();
     };
 
+React.useEffect(()=>{
+    console.log('created');
+    return () => console.log('killed');
+}, []);
+
     let onPostChange = () => {
         let text = newPostElement.current.value;
         props.updateNewPostText (text);
@@ -47,4 +52,4 @@ const MyPosts = (props) => {
     )
 };
 
-export default MyPosts;
+export default React.memo(MyPosts);
