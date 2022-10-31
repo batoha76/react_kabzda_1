@@ -31,9 +31,9 @@ let rerenderEntireTree = (state) => {
         <React.StrictMode>
             <BrowserRouter>
                 <App state/* было appState */={state}
-                    addPost={store.addPost.bind(store)}
-                    updateNewPostText={store.updateNewPostText.bind(store)} />
-            </BrowserRouter>
+                    dispatch={store.dispatch.bind(store)}
+                    /* updateNewPostText={store.updateNewPostText.bind(store)} */ />
+            </BrowserRouter>,
         </React.StrictMode>
     );
 };
