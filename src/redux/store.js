@@ -1,3 +1,10 @@
+/* проверил 14.11.22, исправленно 1 расхождение */
+
+import profileReducer from "./profile_reducer";
+import dialogsReducer from "./dialogs_reducer";
+import sidebarReducer from "./sidebar_reducer";
+
+
 let store = {
     _state: {
         profilePage: {
@@ -9,14 +16,14 @@ let store = {
             newPostText: 'from file `state`',
         },
         dialogsPage: {
-            messages: [ /* ЭТО ВРЕМЕННОЕ РЕШЕНИЕ */
+            messages: [ 
                 { id: 1, message: 'Hello my friend!' },
                 { id: 2, message: 'How are you?' },
                 { id: 3, message: 'Yo' },
                 { id: 4, message: 'Yo' },
                 { id: 5, message: 'Yo' },
             ],
-            dialogsData: [ /* ЭТО ВРЕМЕННОЕ РЕШЕНИЕ */
+            dialogs: [ /* было до 42 урока dialogsData */
                 { id: 1, name: 'Veronica' },
                 { id: 2, name: 'Anton' },
                 { id: 3, name: 'Sonia' },
@@ -24,7 +31,9 @@ let store = {
                 { id: 5, name: 'Diman' },
                 { id: 6, name: 'Vlodimer' },
             ],
+            newMessageBody: '',
         },
+        sidebar: {},
     },
     _callSubscriber  () {
         console.log('state is changed');
@@ -51,22 +60,13 @@ let store = {
         this._callSubscriber(this._state);
     }, */
     dispatch (action) {
-        if (action.type === 'ADD-POST') {
-            let newPost = {
-                id: 5,
-                message: this._state.profilePage.newPostText,
-                likesCount: 0,
-            };
-            this._state.profilePage.posts.push(newPost);
-            this._state.profilePage.newPostText = '';
-            this._callSubscriber(this._state);
-        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
-            this._state.profilePage.newPostText = action.newText;
-            this._callSubscriber(this._state);
-        }
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+        this._state.sidebar = sidebarReducer(this._state.sidebar, action);
+
+        this._callSubscriber(this._state);
     }
 };
-
 
 export default store;
 

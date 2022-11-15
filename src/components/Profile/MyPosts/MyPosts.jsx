@@ -1,17 +1,10 @@
 import React from "react";
 import s from './MyPosts.module.css';
 import Post1 from "./Posts/Post1";
-
+import {updateNewPostTextActionCreator, addPostActionCreator} from '../../../redux/profile_reducer';
 
 
 const MyPosts = (props) => {
-
-/*     let posts = [ 
-        { id: 1, message: 'Hi, how are you?', likesCount: 0 },
-        { id: 2, message: 'It`s my first post', likesCount: 23 },
-        { id: 3, message: 'bla bla bla', likesCount: 2 },
-        { id: 4, message: 'oh, es!!!!', likesCount: 230 },
-    ]; */
 
     let postsElements = props.posts.map (p => <Post1 message={p.message} LikesCount={p.likesCount} />);
 
@@ -19,21 +12,21 @@ const MyPosts = (props) => {
     
     let addPost = () => {
         //props.addPost ();
-        props.dispatch({type: 'ADD-POST'});
+        props.dispatch(addPostActionCreator());
     };
 
+/*     ЭТО КОД ОТ РЕПЕТИТОРА ДЛЯ ПОИМКИ ЧЕГО-ТО
 React.useEffect(()=>{
     console.log('created');
     return () => console.log('killed');
-}, []);
+}, []); */
 
     let onPostChange = () => {
         let text = newPostElement.current.value;
         //props.updateNewPostText (text);
-        let action = {type: 'UPDATE-NEW-POST-TEXT', newText: text};
+        //let action = {type: 'UPDATE-NEW-POST-TEXT', newText: text};
+        let action = updateNewPostTextActionCreator(text);
         props.dispatch(action);
-        //ДВЕ ВЕРХНИЕ СТРОКИ == НИЖНЕЙ
-        /* props.dispatch({type: 'UPDATE-NEW-POST-TEXT', newText: text}); */
     };
 
     return (
